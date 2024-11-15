@@ -17,6 +17,10 @@ java {
 }
 
 
+tasks.javadoc {
+    options.encoding="utf-8"
+}
+
 group = "com.lipanre.test"
 version = "1.0-SNAPSHOT"
 
@@ -65,6 +69,9 @@ jreleaser {
     signing {
         setActive("ALWAYS")
         armored.set(true)
+        setMode("FILE")
+        publicKey = "path/to/public.pgp"
+        secretKey = "path/to/private.pgp"
     }
     deploy {
         maven {
