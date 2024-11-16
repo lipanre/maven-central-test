@@ -21,14 +21,15 @@ tasks.javadoc {
     options.encoding="utf-8"
 }
 
-group = "com.lipanre.test"
-version = "1.0-SNAPSHOT"
+group = "io.github.lipanre"
+version = "1.0"
 
 publishing {
     publications {
         register<MavenPublication>("mavenJava") {
-            groupId = "com.lipanre"
+            groupId = project.group.toString()
             artifactId = "maven-test"
+            version = "1.0"
             from(components["java"])
 
             pom {
@@ -70,8 +71,8 @@ jreleaser {
         setActive("ALWAYS")
         armored.set(true)
         setMode("FILE")
-        publicKey = "path/to/public.pgp"
-        secretKey = "path/to/private.pgp"
+        publicKey = "/Users/lipan/devfiles/gpg/public.pgp"
+        secretKey = "/Users/lipan/devfiles/gpg/private.pgp"
     }
     deploy {
         maven {
